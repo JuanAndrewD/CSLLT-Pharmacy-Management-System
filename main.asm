@@ -24,6 +24,9 @@ login_failed db "Login failed. Press Enter to continue.", 10, 0
 exit_msg db "Goodbye.", 10, 0
 
 section .bss
+global input_buf
+global current_user_id
+global current_user_type
 input_buf resb 128
 current_user_id resb 32
 current_user_type resb 16

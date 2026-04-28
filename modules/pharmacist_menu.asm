@@ -20,7 +20,7 @@ pharmacist_menu:
     push ebp
     mov ebp, esp
 
-.menu_loop:
+menu_loop:
     mov edi, title
     call print_string
     mov edi, prompt
@@ -36,19 +36,19 @@ pharmacist_menu:
     cmp al, '2'
     je do_read
     cmp al, '3'
-    je .return
+    je return
     mov edi, invalid
     call print_string
-    jmp .menu_loop
+    jmp menu_loop
 
 do_verify:
     call verify_prescription
-    jmp .menu_loop
+    jmp menu_loop
 
 do_read:
     call read_customer_record
-    jmp .menu_loop
+    jmp menu_loop
 
-.return:
+return:
     pop ebp
     ret

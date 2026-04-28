@@ -19,7 +19,7 @@ guest_menu:
     push ebp
     mov ebp, esp
 
-.guest_loop:
+guest_loop:
     mov edi, guest_title
     call print_string
     mov edi, guest_prompt
@@ -33,15 +33,15 @@ guest_menu:
     cmp al, '1'
     je do_pharmacist_details
     cmp al, '2'
-    je .return
+    je return
     mov edi, invalid_option
     call print_string
-    jmp .guest_loop
+    jmp guest_loop
 
 do_pharmacist_details:
     call read_pharmacist_details
-    jmp .guest_loop
+    jmp guest_loop
 
-.return:
+return:
     pop ebp
     ret

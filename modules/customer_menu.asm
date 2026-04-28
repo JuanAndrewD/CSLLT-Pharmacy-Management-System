@@ -22,7 +22,7 @@ customer_menu:
     push ebp
     mov ebp, esp
 
-.customer_loop:
+customer_loop:
     mov edi, customer_title
     call print_string
     mov edi, customer_prompt
@@ -40,23 +40,23 @@ customer_menu:
     cmp al, '3'
     je do_read_records
     cmp al, '4'
-    je .return
+    je return
     mov edi, invalid_sel
     call print_string
-    jmp .customer_loop
+    jmp customer_loop
 
 do_add_to_cart:
     call add_to_cart
-    jmp .customer_loop
+    jmp customer_loop
 
 do_create_payment:
     call create_payment
-    jmp .customer_loop
+    jmp customer_loop
 
 do_read_records:
     call read_own_records
-    jmp .customer_loop
+    jmp customer_loop
 
-.return:
+return:
     pop ebp
     ret

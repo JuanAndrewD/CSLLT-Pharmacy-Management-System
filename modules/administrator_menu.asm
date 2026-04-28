@@ -31,7 +31,7 @@ administrator_menu:
     push ebp
     mov ebp, esp
 
-.menu_loop:
+menu_loop:
     mov edi, title
     call print_string
     mov edi, prompt
@@ -65,54 +65,54 @@ administrator_menu:
     cmp al, 'a'
     je do_update_user
     cmp al, 'B'
-    je .return
+    je return
     cmp al, 'b'
-    je .return
+    je return
 
     mov edi, invalid
     call print_string
-    jmp .menu_loop
+    jmp menu_loop
 
 do_add_medicine:
     call add_medicine
-    jmp .menu_loop
+    jmp menu_loop
 
 do_create_order:
     call create_order
-    jmp .menu_loop
+    jmp menu_loop
 
 do_read_admin:
     call read_administrator_details
-    jmp .menu_loop
+    jmp menu_loop
 
 do_read_customer:
     call read_customer_details
-    jmp .menu_loop
+    jmp menu_loop
 
 do_read_medicine:
     call read_medicine_details
-    jmp .menu_loop
+    jmp menu_loop
 
 do_read_payment:
     call read_payment_details
-    jmp .menu_loop
+    jmp menu_loop
 
 do_read_pharmacist:
     call read_pharmacist_details
-    jmp .menu_loop
+    jmp menu_loop
 
 do_update_customer:
     call update_customer_record
-    jmp .menu_loop
+    jmp menu_loop
 
 do_update_medicine:
     call update_medicine
-    jmp .menu_loop
+    jmp menu_loop
 
 do_update_user:
     call update_user_details
-    jmp .menu_loop
+    jmp menu_loop
 
-.return:
+return:
     pop ebp
     ret
