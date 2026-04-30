@@ -1,12 +1,13 @@
 ; registration.asm
 ; Description: Module for new user registration and storing user credentials/profile info.
 ; Platform: x86 32-bit, ELF32 assembly, elf_i386 linking.
-; Data files: user.txt (user_id, user_name, user_type)
+; Data files: user.txt (user_id, user_name, password, user_type)
 
 section .data
 reg_title db 10, "Register New User", 10, 0
 prompt_id db "Enter new user ID: ", 0
 prompt_name db "Enter user name: ", 0
+prompt_pwd db "Enter password: ", 0
 prompt_type db "Enter user type [C/P/A]: ", 0
 success_msg db "Registration completed successfully.", 10, 0
 user_file db "user.txt", 0
@@ -34,15 +35,16 @@ register_user:
 
     mov eax, 5
     mov ebx, user_file
-    mov ecx, 0x601
+    mov ecx, 0x441
     mov edx, 0644
     int 0x80
     mov esi, eax
 
-    mov eax, 4
-    mov ebx, esi
     mov ecx, input_buf
     call string_length
+    mov edx, eax
+    mov eax, 4
+    mov ebx, esi
     int 0x80
 
     mov eax, 4
@@ -57,10 +59,30 @@ register_user:
     mov edx, 64
     call read_input
 
-    mov eax, 4
-    mov ebx, esi
     mov ecx, input_buf
     call string_length
+    mov edx, eax
+    mov eax, 4
+    mov ebx, esi
+    int 0x80
+
+    mov eax, 4
+    mov ebx, esi
+    mov ecx, comma
+    mov edx, 1
+    int 0x80
+
+    mov edi, prompt_pwd
+    call print_string
+    mov ecx, input_buf
+    mov edx, 32
+    call read_input
+
+    mov ecx, input_buf
+    call string_length
+    mov edx, eax
+    mov eax, 4
+    mov ebx, esi
     int 0x80
 
     mov eax, 4
@@ -75,10 +97,11 @@ register_user:
     mov edx, 4
     call read_input
 
-    mov eax, 4
-    mov ebx, esi
     mov ecx, input_buf
     call string_length
+    mov edx, eax
+    mov eax, 4
+    mov ebx, esi
     int 0x80
 
     mov eax, 4

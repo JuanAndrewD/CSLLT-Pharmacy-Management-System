@@ -1,0 +1,2 @@
+U0001,Juan,juanandrewd,C
+U0002,JunaAndrew,juanandrewd,A
