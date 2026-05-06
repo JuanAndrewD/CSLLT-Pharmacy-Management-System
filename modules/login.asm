@@ -2,7 +2,7 @@
 ; Platform: x86 32-bit, ELF32 assembly
 
 section .data
-    login_title    db 10, "--- Login System ---", 10, 0
+    login_title    db 10, "Login System", 10, 0
     prompt_name    db "Enter user name: ", 0
     prompt_pwd     db "Enter password: ", 0
     not_found      db 10, "Error: User not found or invalid credentials.", 10, 0
