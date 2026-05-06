@@ -7,8 +7,6 @@ section .data
 add_title db 10, "Add New Medicine", 10, 0
 prompt_id db "Enter medicine ID: ", 0
 prompt_name db "Enter medicine name: ", 0
-prompt_desc db "Enter medicine description: ", 0
-prompt_severity db "Enter severity [normal/needs prescription]: ", 0
 prompt_qty db "Enter quantity available: ", 0
 success_msg db "Medicine added to inventory.", 10, 0
 medicine_file db "medicine.txt", 0
@@ -121,7 +119,7 @@ write_comma:
     int 0x80
     pop eax
     ret
-    
+
 string_length:
     push ebp
     mov ebp, esp
