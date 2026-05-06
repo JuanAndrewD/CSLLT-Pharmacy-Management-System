@@ -3,7 +3,6 @@
 ;              Coordinates registration, login, logout, and role-based menus.
 ; Platform: x86 32-bit, ELF32 assembly, elf_i386 linking.
 ; Dependencies: modules/registration.asm, modules/login.asm, modules/logout.asm,
-;               modules/customer_menu.asm, modules/guest_menu.asm,
 ;               modules/pharmacist_menu.asm, modules/administrator_menu.asm.
 
 ; registration.asm
@@ -18,7 +17,7 @@
 
 section .data
 welcome_msg db 10, "Pharmacy Management System", 10, 0
-main_menu db "1) Register", 10, "2) Login", 10, "3) Continue as Guest", 10, "4) Exit", 10, 0
+main_menu db "1) Register", 10, "2) Login", 10, "3) Exit", 10, 0
 invalid_option db "Invalid option. Try again.", 10, 0
 login_failed db "Login failed. Press Enter to continue.", 10, 0
 exit_msg db "Goodbye.", 10, 0
@@ -38,8 +37,6 @@ global read_input
 
 extern register_user
 extern login_user
-extern guest_menu
-extern customer_menu
 extern pharmacist_menu
 extern administrator_menu
 extern logout_user
@@ -62,8 +59,6 @@ main_loop:
     cmp al, '2'
     je do_login
     cmp al, '3'
-    je do_guest
-    cmp al, '4'
     je do_exit
 
     mov edi, invalid_option
@@ -80,19 +75,14 @@ do_login:
     jne login_fail
 
     mov al, [current_user_type]
-    cmp al, 'C'
-    je customer_mode
     cmp al, 'P'
     je pharmacist_mode
     cmp al, 'A'
     je admin_mode
 
-guest_mode:
-    call guest_menu
-    jmp main_loop
-
-customer_mode:
-    call customer_menu
+    ; invalid type
+    mov edi, login_failed
+    call print_string
     jmp main_loop
 
 pharmacist_mode:
@@ -106,10 +96,6 @@ admin_mode:
 login_fail:
     mov edi, login_failed
     call print_string
-    jmp main_loop
-
-do_guest:
-    call guest_menu
     jmp main_loop
 
 do_exit:

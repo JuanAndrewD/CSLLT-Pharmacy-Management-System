@@ -8,8 +8,9 @@ reg_title db 10, "Register New User", 10, 0
 prompt_id db "Enter new user ID: ", 0
 prompt_name db "Enter user name: ", 0
 prompt_pwd db "Enter password: ", 0
-prompt_type db "Enter user type [C/P/A]: ", 0
+prompt_type db "Enter user type [P/A]: ", 0
 success_msg db "Registration completed successfully.", 10, 0
+invalid_type db "Invalid user type. Only P (Pharmacist) or A (Administrator) allowed.", 10, 0
 user_file db "user.txt", 0
 comma db ",", 0
 newline db 10, 0
@@ -97,6 +98,16 @@ register_user:
     mov edx, 4
     call read_input
 
+    mov al, [input_buf]
+    cmp al, 'P'
+    je .valid_type
+    cmp al, 'A'
+    je .valid_type
+    mov edi, invalid_type
+    call print_string
+    jmp register_user
+
+.valid_type:
     mov ecx, input_buf
     call string_length
     mov edx, eax
