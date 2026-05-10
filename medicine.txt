@@ -1,4 +1,4 @@
-M001,Juan,100
-M002,Pedro,150
+M001,Juan,150
+M002,Pedro,200
 M003,Ana,1
 M004,Luisa,250
