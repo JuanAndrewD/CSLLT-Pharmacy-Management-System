@@ -3,3 +3,4 @@ U0003,jaun,juanandrewd,P
 U0004,juan,jaub,P
 U0002,Juan,Jaub,P
 U00001,Juan,Joba,P
+juan,juan,juan,A

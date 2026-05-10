@@ -3,12 +3,11 @@
 ; Platform: x86 32-bit, ELF32 assembly, elf_i386 linking.
 ; Dependencies: modules/add_medicine.asm, modules/create_order.asm, modules/read_administrator_details.asm,
 ;               modules/read_customer_details.asm, modules/read_medicine_details.asm,
-;               modules/read_payment_details.asm, modules/read_pharmacist_details.asm,
-;               modules/update_customer_record.asm, modules/update_medicine.asm, modules/update_user_details.asm
+;               modules/read_payment_details.asm, modules/read_pharmacist_details.asm
 
 section .data
 title db 10, "Administrator Menu", 10, 0
-prompt db "1) Add Medicine", 10, "2) Read Administrator Details", 10, "3) Read Medicine Details", 10, "4) Read Pharmacist Details", 10, "5) Update Medicine", 10, "6) Update User Details", 10, "7) Back", 10, 0
+prompt db "1) Add Medicine", 10, "2) Read Administrator Details", 10, "3) Read Medicine Details", 10, "4) Read Pharmacist Details", 10, "5) Back", 10, 0
 invalid db "Invalid option in administrator menu.", 10, 0
 
 section .text
@@ -19,8 +18,6 @@ extern add_medicine
 extern read_administrator_details
 extern read_medicine_details
 extern read_pharmacist_details
-extern update_medicine
-extern update_user_details
 extern input_buf
 
 administrator_menu:
@@ -47,10 +44,6 @@ menu_loop:
     cmp al, '4'
     je do_read_pharmacist
     cmp al, '5'
-    je do_update_medicine
-    cmp al, '6'
-    je do_update_user
-    cmp al, '7'
     je return
 
     mov edi, invalid
@@ -71,14 +64,6 @@ do_read_medicine:
 
 do_read_pharmacist:
     call read_pharmacist_details
-    jmp menu_loop
-
-do_update_medicine:
-    call update_medicine
-    jmp menu_loop
-
-do_update_user:
-    call update_user_details
     jmp menu_loop
 
 return:
