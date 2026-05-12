@@ -1,7 +1,3 @@
-; check_stock_level.asm
-; Description: Iterates through all lines in medicine.txt and displays stock status.
-; Platform: x86 32-bit, ELF32 assembly.
-
 section .data
     filename db "medicine.txt", 0
     header db 10, "ID   | Name           | Qty | Status", 10, "------------------------------------------", 10, 0

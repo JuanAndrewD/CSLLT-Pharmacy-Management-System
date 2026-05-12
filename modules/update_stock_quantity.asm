@@ -1,6 +1,3 @@
-; update_stock_quantity.asm
-; Purpose: Search for ID, perform Additive math, and rewrite the file correctly.
-
 section .data
     file_name db "medicine.txt", 0
     temp_file db "medicine.tmp", 0
@@ -49,7 +46,7 @@ update_stock_quantity:
 
     mov eax, 5              ; sys_open
     mov ebx, temp_file
-    mov ecx, 577            ; O_WRONLY(1) | O_CREAT(64) | O_TRUNC(512)
+    mov ecx, 577
     mov edx, 0644h          ; Permissions: rw-r--r--
     int 0x80
     mov [fd_out], eax
@@ -62,7 +59,7 @@ update_stock_quantity:
     int 0x80
     
     mov esi, file_buf
-    lea edx, [file_buf + eax] ; EDX = End of Buffer pointer (KEEP THIS SAFE)
+    lea edx, [file_buf + eax]
 
 .line_loop:
     cmp esi, edx            ; Compare current pointer to end pointer
@@ -79,7 +76,7 @@ update_stock_quantity:
     pop esi
     jne .not_the_one
 
-    ; --- TARGET FOUND: Perform Addition ---
+    ; TARGET FOUND: Perform Addition
     call .write_temp_field  ; Write ID
     call .write_comma
     

@@ -44,13 +44,13 @@ read_administrator_details:
     xor edx, edx            ; edx = current line length counter
 
 .copy_char:
-    cmp ebx, esi            ; End of buffer?
+    cmp ebx, esi
     jge .check_last_line
     mov al, [file_buf + ebx]
     mov [edi + edx], al
     inc ebx
     inc edx
-    cmp al, 10              ; Is it a newline?
+    cmp al, 10
     jne .copy_char
 
     ; We have a full line in line_tmp. Check the type (character before 0xA)

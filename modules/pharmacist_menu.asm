@@ -1,8 +1,3 @@
-; pharmacist_menu.asm
-; Description: Pharmacist menu module. Provides access to stock management and medicine details.
-; Platform: x86 32-bit, ELF32 assembly, elf_i386 linking.
-; Dependencies: modules/check_stock_level.asm, modules/read_medicine_details.asm
-
 section .data
 title db 10, "Pharmacist Menu", 10, 0
 prompt db "1) Check Stock Level", 10, "2) Read Medicine Details", 10, "3) Update Stock Quantity", 10, "4) Back", 10, 0

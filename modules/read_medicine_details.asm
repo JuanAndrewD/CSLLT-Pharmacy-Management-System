@@ -1,8 +1,3 @@
-; read_medicine_details.asm
-; Description: Module to read and display available medicine inventory and metadata.
-; Platform: x86 32-bit, ELF32 assembly, elf_i386 linking.
-; Data files: medicine.txt (medicine_id, medicine_name, description, severity, quantity)
-
 section .data
 title db 10, "Medicine Inventory", 10, 0
 medicine_file db "medicine.txt", 0

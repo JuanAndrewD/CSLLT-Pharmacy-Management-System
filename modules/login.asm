@@ -1,6 +1,3 @@
-; login.asm - Corrected Module for user authentication
-; Platform: x86 32-bit, ELF32 assembly
-
 section .data
     login_title    db 10, "Login System", 10, 0
     prompt_name    db "Enter user name: ", 0

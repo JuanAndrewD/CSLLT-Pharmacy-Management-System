@@ -1,8 +1,3 @@
-; registration.asm
-; Description: Module for new user registration and storing user credentials/profile info.
-; Platform: x86 32-bit, ELF32 assembly, elf_i386 linking.
-; Data files: user.txt (user_id, user_name, password, user_type)
-
 section .data
 reg_title db 10, "Register New User", 10, 0
 prompt_id db "Enter new user ID: ", 0
