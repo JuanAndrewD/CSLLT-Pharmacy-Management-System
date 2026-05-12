@@ -1,2 +1,4 @@
 U001,juan,juan,A
 U0002,juan,jaub,P
+U0003,JuanAndrew,AndrewJuan,P
+U0004,AndrewJuan,JuanAndrew,A

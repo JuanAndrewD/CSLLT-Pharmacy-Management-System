@@ -1,4 +1,5 @@
 M001,Paracetamol,150
 M002,Aspirin,200
-M003,Crocin,1
+M003,Crocin,51
 M004,Ibuprofen,250
+M005,Amoxicillin,50

@@ -1,8 +1,3 @@
-; add_medicine.asm
-; Description: Administrator module to add more variance of medicine including its details into medicine.txt.
-; Platform: x86 32-bit, ELF32 assembly, elf_i386 linking.
-; Data files: medicine.txt (medicine_id, medicine_name, description, severity, quantity)
-
 section .data
 add_title db 10, "Add New Medicine", 10, 0
 prompt_id db "Enter medicine ID: ", 0

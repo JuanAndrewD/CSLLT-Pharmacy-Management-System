@@ -1,20 +1,3 @@
-; main.asm
-; Description: Top-level entry point for the Pharmacy Management System.
-;              Coordinates registration, login, logout, and role-based menus.
-; Platform: x86 32-bit, ELF32 assembly, elf_i386 linking.
-; Dependencies: modules/registration.asm, modules/login.asm, modules/logout.asm,
-;               modules/pharmacist_menu.asm, modules/administrator_menu.asm.
-
-; registration.asm
-; login.asm
-; logout.asm
-; customer_menu.asm
-; guest_menu.asm
-; pharmacist_menu.asm
-; administrator_menu.asm
-
-; Top-level entry point. References major modules: registration, login, logout, customer/guest/pharmacist/administrator menus.
-
 section .data
 welcome_msg db 10, "Pharmacy Management System", 10, 0
 main_menu db "1) Register", 10, "2) Login", 10, "3) Exit", 10, 0
