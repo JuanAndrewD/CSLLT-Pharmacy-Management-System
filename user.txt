@@ -1,6 +1,2 @@
-U0002,junaandrew,juanandrewd,A
-U0003,jaun,juanandrewd,P
-U0004,juan,jaub,P
-U0002,Juan,Jaub,P
-U00001,Juan,Joba,P
-juan,juan,juan,A
+U001,juan,juan,A
+U0002,juan,jaub,P
